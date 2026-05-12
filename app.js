@@ -1,8 +1,10 @@
 const SHEET_ID =
   "1rjAvzY28sZ6QABnztEiUK56NSIzlvYrlYl7E8eGdI7A"
 
+const SHEET_NAME = "Menu"
+
 const API_URL =
-  `https://opensheet.elk.sh/${SHEET_ID}/Menu`
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_NAME}`
 
 
 
@@ -10,11 +12,43 @@ async function loadMenu(){
 
   try{
 
-    const response = await fetch(
-      `${API_URL}?t=${Date.now()}`
-    )
+    const response = await fetch(API_URL)
 
-    const data = await response.json()
+    const text = await response.text()
+
+    const json =
+      JSON.parse(
+        text.substring(
+          47,
+          text.length - 2
+        )
+      )
+
+    const rows =
+      json.table.rows
+
+    const data =
+      rows.map(row => ({
+
+        id:
+          row.c[0]?.v || "",
+
+        category:
+          row.c[1]?.v || "",
+
+        name:
+          row.c[2]?.v || "",
+
+        price:
+          row.c[3]?.v || 0,
+
+        available:
+          row.c[4]?.v || "",
+
+        temp:
+          row.c[5]?.v || "-"
+
+      }))
 
     renderMenu(data)
 
@@ -122,7 +156,7 @@ function renderCategory(title,items){
 function renderItem(item){
 
   const available =
-    item.available === "FALSE"
+    item.available === false
     ? `
       <span class="sold">
         Sold Out
@@ -178,17 +212,15 @@ function renderItem(item){
 
 function formatPrice(price){
 
-  const value =
-    Number(price || 0)
-
-  return `Rp ${value.toLocaleString("id-ID")}`
+  return `Rp ${Number(price)
+    .toLocaleString("id-ID")}`
 
 }
 
 
 
 /* =========================
-   BEANS SECTION
+   BEANS
 ========================= */
 
 function renderBeansSection(){
@@ -261,56 +293,6 @@ function renderBeansSection(){
           <div class="bean-note">
             Berry-forward profile with
             winey finish and floral aroma.
-          </div>
-
-        </div>
-
-        <div class="bean-card">
-
-          <div class="bean-top">
-
-            <div class="bean-origin">
-              Temanggung
-            </div>
-
-            <div class="bean-badge">
-              Bold
-            </div>
-
-          </div>
-
-          <div class="bean-name">
-            Robusta Temanggung
-          </div>
-
-          <div class="bean-note">
-            Thick body, dark chocolate
-            notes, and intense character.
-          </div>
-
-        </div>
-
-        <div class="bean-card">
-
-          <div class="bean-top">
-
-            <div class="bean-origin">
-              Ethiopia
-            </div>
-
-            <div class="bean-badge">
-              Floral
-            </div>
-
-          </div>
-
-          <div class="bean-name">
-            Ethiopia Natural
-          </div>
-
-          <div class="bean-note">
-            Tea-like mouthfeel with floral
-            fragrance and citrus finish.
           </div>
 
         </div>
