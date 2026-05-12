@@ -221,3 +221,100 @@ function formatPrice(price){
 
 
 loadCSV()
+
+
+function renderBeansSection(){
+
+  return `
+
+    <section class="beans-section">
+
+      <div class="category-title">
+
+        <div class="category-line"></div>
+
+        <div class="category-name">
+          Coffee Beans
+        </div>
+
+        <div class="category-line"></div>
+
+      </div>
+
+      <div class="beans-subtitle">
+        Single Origin • House Blend • Specialty
+      </div>
+
+      <div class="beans-grid">
+
+        <div class="bean-card">
+
+          <div class="bean-name">
+            Halu Banana
+          </div>
+
+          <div class="bean-origin">
+            Bandung
+          </div>
+
+          <div class="bean-note">
+            Fruity • Sweet • Smooth
+          </div>
+
+        </div>
+
+        <div class="bean-card">
+
+          <div class="bean-name">
+            Blueberry Wine
+          </div>
+
+          <div class="bean-origin">
+            Aceh
+          </div>
+
+          <div class="bean-note">
+            Berry • Winey • Floral
+          </div>
+
+        </div>
+
+        <div class="bean-card">
+
+          <div class="bean-name">
+            Temanggung Robusta
+          </div>
+
+          <div class="bean-origin">
+            Temanggung
+          </div>
+
+          <div class="bean-note">
+            Bold • Chocolate • Strong Body
+          </div>
+
+        </div>
+
+        <div class="bean-card">
+
+          <div class="bean-name">
+            Ethiopia Natural
+          </div>
+
+          <div class="bean-origin">
+            Ethiopia
+          </div>
+
+          <div class="bean-note">
+            Floral • Tea Like • Citrus
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  `
+
+}
