@@ -46,9 +46,15 @@ async function loadMenu(){
 
       grouped[category].forEach(item => {
 
-        const isDrink =
-          category === "Drink" ||
-          category === "Coffee"
+        const temp =
+          item.temp
+          ? item.temp.trim()
+          : ""
+
+        const available =
+          item.available
+          ? item.available.trim()
+          : "TRUE"
 
         itemsHTML += `
 
@@ -59,24 +65,23 @@ async function loadMenu(){
               <div class="menu-left">
 
                 <div class="menu-name">
-                  ${item.name}
+                  ${item.name || "-"}
                 </div>
 
                 <div class="menu-meta">
 
                   ${
-                    item.temp &&
-                    item.temp !== "-"
+                    temp && temp !== "-"
                     ? `
                       <span class="temp-badge">
-                        ${item.temp}
+                        ${temp}
                       </span>
                     `
                     : ``
                   }
 
                   ${
-                    item.available === "FALSE"
+                    available === "FALSE"
                     ? `
                       <span class="sold">
                         SOLD OUT
@@ -96,7 +101,7 @@ async function loadMenu(){
               <div class="price-area">
 
                 <div class="price">
-                  Rp ${Number(item.price)
+                  Rp ${Number(item.price || 0)
                     .toLocaleString("id-ID")}
                 </div>
 

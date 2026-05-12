@@ -199,23 +199,51 @@ body{
   gap:16px;
 }
 
+.menu-left{
+  flex:1;
+}
+
 .menu-name{
   font-size:17px;
   line-height:1.7;
 }
 
-.menu-status{
-  margin-top:5px;
-  font-size:11px;
+.menu-meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:8px;
+  flex-wrap:wrap;
+}
+
+.temp-badge{
+
+  padding:4px 10px;
+
+  border-radius:999px;
+
+  background:
+  rgba(212,175,55,.08);
+
+  border:
+  1px solid rgba(212,175,55,.12);
+
+  color:#d4af37;
+
+  font-size:10px;
+
+  letter-spacing:1px;
 }
 
 .available{
   color:#888;
+  font-size:11px;
 }
 
 .sold{
   color:#ff5c5c;
   letter-spacing:1px;
+  font-size:11px;
 }
 
 .price-area{
@@ -385,34 +413,4 @@ body{
     top:74px;
   }
 
-}
-.menu-left{
-  flex:1;
-}
-
-.menu-meta{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:8px;
-  flex-wrap:wrap;
-}
-
-.temp-badge{
-
-  padding:4px 10px;
-
-  border-radius:999px;
-
-  background:
-  rgba(212,175,55,.08);
-
-  border:
-  1px solid rgba(212,175,55,.12);
-
-  color:#d4af37;
-
-  font-size:10px;
-
-  letter-spacing:1px;
 }
