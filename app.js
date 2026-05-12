@@ -11,15 +11,25 @@ const BEANS_API =
 
 async function fetchJSON(url){
 
-  const response = await fetch(
-    `${url}?v=${Date.now()}`
-  )
+  try{
 
-  if(!response.ok){
-    throw new Error("Failed fetch")
+    const response = await fetch(
+      `${url}?t=${Date.now()}`
+    )
+
+    const text = await response.text()
+
+    return JSON.parse(text)
+
   }
 
-  return response.json()
+  catch(error){
+
+    console.error("FETCH ERROR:", error)
+
+    return []
+
+  }
 
 }
 
