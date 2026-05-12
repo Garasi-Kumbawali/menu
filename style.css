@@ -8,17 +8,17 @@
 
   --bg:#050505;
 
-  --card:#0d0d0d;
+  --card:#0c0c0c;
 
   --gold:#d4a017;
 
-  --gold-soft:#f6d67a;
+  --gold-soft:#f2cf74;
 
-  --text:#f5f1e8;
+  --text:#f5f2eb;
 
   --muted:#bcae90;
 
-  --line:rgba(212,160,23,.18);
+  --line:rgba(212,160,23,.12);
 
 }
 
@@ -28,16 +28,20 @@ html{
 
 body{
 
+  min-height:100vh;
+
+  overflow-x:hidden;
+
   background:
   radial-gradient(
     circle at top,
-    rgba(212,160,23,.15),
+    rgba(212,160,23,.14),
     transparent 30%
   ),
 
   linear-gradient(
     180deg,
-    #121212,
+    #151515,
     #050505
   );
 
@@ -45,13 +49,11 @@ body{
 
   font-family:"Montserrat",sans-serif;
 
-  min-height:100vh;
-
-  overflow-x:hidden;
-
 }
 
-.bg-glow{
+body::before{
+
+  content:"";
 
   position:fixed;
 
@@ -60,10 +62,11 @@ body{
   pointer-events:none;
 
   background:
-  radial-gradient(
-    circle at center,
-    rgba(212,160,23,.05),
-    transparent 45%
+  linear-gradient(
+    90deg,
+    transparent,
+    rgba(212,160,23,.025),
+    transparent
   );
 
 }
@@ -72,19 +75,23 @@ body{
 
   width:100%;
 
-  max-width:920px;
+  max-width:980px;
 
   margin:auto;
 
-  padding:34px 18px 80px;
+  padding:42px 18px 80px;
 
 }
+
+
+
+/* HERO */
 
 .hero{
 
   text-align:center;
 
-  margin-bottom:32px;
+  margin-bottom:34px;
 
 }
 
@@ -92,11 +99,11 @@ body{
 
   color:var(--gold);
 
-  letter-spacing:4px;
-
   font-size:12px;
 
   font-weight:700;
+
+  letter-spacing:5px;
 
   margin-bottom:18px;
 
@@ -106,24 +113,24 @@ body{
 
   font-family:"Cinzel",serif;
 
-  font-size:78px;
+  font-size:86px;
 
-  line-height:.9;
+  line-height:.92;
 
   color:var(--text);
 
   text-shadow:
-  0 0 24px rgba(212,160,23,.12);
+  0 0 30px rgba(212,160,23,.12);
 
 }
 
 .hero-divider{
 
-  width:140px;
+  width:160px;
 
   height:1px;
 
-  margin:24px auto 18px;
+  margin:26px auto 18px;
 
   background:
   linear-gradient(
@@ -139,17 +146,25 @@ body{
 
   color:var(--muted);
 
-  font-size:15px;
-
   letter-spacing:2px;
 
+  font-size:14px;
+
 }
+
+
+
+/* CARD */
 
 .menu-sheet{
 
   position:relative;
 
   overflow:hidden;
+
+  border-radius:34px;
+
+  padding:48px 42px;
 
   background:
   linear-gradient(
@@ -159,75 +174,57 @@ body{
   );
 
   border:
-  1px solid var(--line);
-
-  border-radius:32px;
-
-  padding:42px 38px;
+  1px solid rgba(212,160,23,.14);
 
   backdrop-filter:blur(18px);
 
   box-shadow:
-  0 20px 80px rgba(0,0,0,.5);
+  0 24px 80px rgba(0,0,0,.55);
 
 }
 
-.sheet-glow{
+
+
+/* ORNAMENT */
+
+.menu-sheet::before,
+.menu-sheet::after{
+
+  content:"";
 
   position:absolute;
 
-  inset:0;
-
-  pointer-events:none;
-
-  background:
-  radial-gradient(
-    circle at top,
-    rgba(212,160,23,.06),
-    transparent 40%
-  );
-
-}
-
-.sheet-ornament{
-
-  position:absolute;
-
-  width:90px;
-  height:90px;
+  width:120px;
+  height:120px;
 
   border-color:
   rgba(212,160,23,.18);
 
 }
 
-.sheet-ornament.tl{
+.menu-sheet::before{
+
   top:18px;
   left:18px;
+
   border-top:1px solid;
   border-left:1px solid;
+
 }
 
-.sheet-ornament.tr{
-  top:18px;
-  right:18px;
-  border-top:1px solid;
-  border-right:1px solid;
-}
+.menu-sheet::after{
 
-.sheet-ornament.bl{
-  bottom:18px;
-  left:18px;
-  border-bottom:1px solid;
-  border-left:1px solid;
-}
-
-.sheet-ornament.br{
   bottom:18px;
   right:18px;
+
   border-bottom:1px solid;
   border-right:1px solid;
+
 }
+
+
+
+/* CATEGORY */
 
 .category{
 
@@ -245,9 +242,9 @@ body{
 
   align-items:center;
 
-  gap:16px;
+  gap:18px;
 
-  margin-bottom:20px;
+  margin-bottom:22px;
 
 }
 
@@ -257,7 +254,7 @@ body{
 
   color:var(--gold);
 
-  font-size:36px;
+  font-size:38px;
 
   white-space:nowrap;
 
@@ -278,41 +275,54 @@ body{
 
 }
 
+
+
+/* MENU */
+
 .menu-list{
+
   display:grid;
-  gap:18px;
+
+  gap:16px;
+
 }
 
 .menu-item{
 
-  display:flex;
+  display:grid;
 
-  justify-content:space-between;
+  grid-template-columns:
+  minmax(0,1fr)
+  auto;
 
-  align-items:flex-start;
+  gap:20px;
 
-  gap:18px;
+  align-items:start;
 
-  padding-bottom:14px;
+  padding-bottom:16px;
 
   border-bottom:
   1px dashed rgba(212,160,23,.12);
 
 }
 
+.menu-item:last-child{
+  border-bottom:none;
+}
+
 .menu-left{
-  flex:1;
+  min-width:0;
 }
 
 .menu-name{
+
+  color:var(--text);
 
   font-size:18px;
 
   line-height:1.5;
 
   font-weight:600;
-
-  color:var(--text);
 
 }
 
@@ -332,9 +342,11 @@ body{
 
 .available{
 
-  color:#b8b8b8;
+  color:#a7a7a7;
 
-  font-size:11px;
+  font-size:10px;
+
+  font-weight:700;
 
   letter-spacing:1px;
 
@@ -346,7 +358,9 @@ body{
 
   color:var(--gold-soft);
 
-  font-size:11px;
+  font-size:10px;
+
+  font-weight:700;
 
   letter-spacing:1px;
 
@@ -356,15 +370,21 @@ body{
 
 .sold{
 
-  color:#ff6f6f;
+  color:#ff6e6e;
 
-  font-size:11px;
+  font-size:10px;
+
+  font-weight:700;
 
   letter-spacing:1px;
 
   text-transform:uppercase;
 
 }
+
+
+
+/* PRICE */
 
 .menu-price{
 
@@ -376,34 +396,61 @@ body{
 
   white-space:nowrap;
 
+  text-align:right;
+
+  min-width:120px;
+
+  padding-left:18px;
+
 }
+
+
+
+/* LOADING */
 
 .loading{
 
   text-align:center;
 
+  padding:70px 20px;
+
   color:var(--muted);
 
-  padding:60px 20px;
-
 }
+
+
+
+/* MOBILE */
 
 @media(max-width:768px){
 
   .menu-wrapper{
+
     padding:0;
+
   }
 
   .hero{
-    padding:42px 24px 22px;
+
+    padding:42px 24px 24px;
+
     margin-bottom:0;
+
   }
 
   .hero-title{
 
-    font-size:48px;
+    font-size:52px;
 
     line-height:1;
+
+  }
+
+  .hero-topline{
+
+    font-size:10px;
+
+    letter-spacing:4px;
 
   }
 
@@ -411,15 +458,13 @@ body{
 
     font-size:12px;
 
-    letter-spacing:1px;
-
   }
 
   .menu-sheet{
 
-    border-radius:28px 28px 0 0;
+    border-radius:30px 30px 0 0;
 
-    padding:28px 20px 42px;
+    padding:32px 20px 44px;
 
     border-left:none;
     border-right:none;
@@ -427,15 +472,37 @@ body{
 
   }
 
+  .category{
+
+    margin-bottom:36px;
+
+  }
+
+  .category-title{
+
+    gap:12px;
+
+    margin-bottom:18px;
+
+  }
+
   .category-name{
+
     font-size:28px;
+
+  }
+
+  .menu-list{
+
+    gap:14px;
+
   }
 
   .menu-item{
 
-    gap:12px;
+    gap:14px;
 
-    padding-bottom:16px;
+    padding-bottom:14px;
 
   }
 
@@ -443,7 +510,7 @@ body{
 
     font-size:15px;
 
-    line-height:1.5;
+    line-height:1.45;
 
   }
 
@@ -459,7 +526,7 @@ body{
   .temp,
   .sold{
 
-    font-size:10px;
+    font-size:9px;
 
   }
 
@@ -467,11 +534,10 @@ body{
 
     font-size:15px;
 
-  }
+    min-width:88px;
 
-  .sheet-ornament{
-    width:55px;
-    height:55px;
+    padding-left:10px;
+
   }
 
 }
