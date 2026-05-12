@@ -112,6 +112,8 @@ function renderMenu(data){
       grouped["Drink"] || []
     )}
 
+    ${renderBeansSection()}
+
   `
 
 }
