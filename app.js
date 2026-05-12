@@ -126,17 +126,17 @@ function renderCategory(title,items){
 
     <section class="category">
 
-<div class="category-title">
+      <div class="category-title">
 
-  <div class="category-line"></div>
+        <div class="category-line"></div>
 
-  <div class="category-name">
-    ${title}
-  </div>
+        <div class="category-name">
+          ${title}
+        </div>
 
-  <div class="category-line"></div>
+        <div class="category-line"></div>
 
-</div>
+      </div>
 
       <div class="menu-list">
 
@@ -220,8 +220,9 @@ function formatPrice(price){
 
 
 
-loadCSV()
-
+/* =========================
+   COFFEE BEANS
+========================= */
 
 function renderBeansSection(){
 
@@ -318,3 +319,7 @@ function renderBeansSection(){
   `
 
 }
+
+
+
+loadCSV()
