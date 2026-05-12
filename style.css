@@ -555,3 +555,206 @@ body::before{
   }
 
 }
+
+.beans-section{
+
+  margin-top:70px;
+
+}
+
+.beans-subtitle{
+
+  text-align:center;
+
+  color:var(--muted);
+
+  margin-top:-8px;
+
+  margin-bottom:34px;
+
+  letter-spacing:2px;
+
+  font-size:11px;
+
+  text-transform:uppercase;
+
+}
+
+.beans-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  gap:18px;
+
+}
+
+.bean-card{
+
+  position:relative;
+
+  overflow:hidden;
+
+  padding:24px;
+
+  border-radius:24px;
+
+  background:
+  linear-gradient(
+    180deg,
+    rgba(255,255,255,.03),
+    rgba(255,255,255,.01)
+  );
+
+  border:
+  1px solid rgba(212,160,23,.1);
+
+  transition:.3s ease;
+
+}
+
+.bean-card::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+  radial-gradient(
+    circle at top right,
+    rgba(212,160,23,.08),
+    transparent 35%
+  );
+
+}
+
+.bean-card:hover{
+
+  transform:translateY(-4px);
+
+  border-color:
+  rgba(212,160,23,.22);
+
+}
+
+.bean-top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:18px;
+
+}
+
+.bean-origin{
+
+  color:var(--muted);
+
+  font-size:11px;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+}
+
+.bean-badge{
+
+  padding:6px 10px;
+
+  border-radius:999px;
+
+  background:
+  rgba(212,160,23,.08);
+
+  border:
+  1px solid rgba(212,160,23,.12);
+
+  color:var(--gold);
+
+  font-size:10px;
+
+  font-weight:700;
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+
+}
+
+.bean-name{
+
+  color:var(--gold);
+
+  font-family:"Cinzel",serif;
+
+  font-size:28px;
+
+  line-height:1.1;
+
+  margin-bottom:14px;
+
+}
+
+.bean-note{
+
+  color:var(--muted);
+
+  line-height:1.8;
+
+  font-size:14px;
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .beans-section{
+
+    margin-top:52px;
+
+  }
+
+  .beans-grid{
+
+    grid-template-columns:1fr;
+
+    gap:14px;
+
+  }
+
+  .bean-card{
+
+    padding:20px;
+
+    border-radius:20px;
+
+  }
+
+  .bean-name{
+
+    font-size:22px;
+
+  }
+
+  .bean-note{
+
+    font-size:13px;
+
+    line-height:1.7;
+
+  }
+
+}
