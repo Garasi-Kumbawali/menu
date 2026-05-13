@@ -50,10 +50,10 @@ async function loadMenu(){
           row.c[2]?.v || "",
 
         price:
-          row.c[3]?.v || 0,
+          row.c[3]?.v || "",
 
         available:
-          row.c[4]?.v || "",
+          row.c[4]?.v || "TRUE",
 
         temp:
           row.c[5]?.v || "-"
@@ -210,16 +210,19 @@ function renderCategory(title,items){
 
 function renderItem(item){
 
+  const isAvailable =
+    String(item.available).toUpperCase() === "TRUE"
+
   const available =
-    item.available === false
+    !isAvailable
     ? `
       <span class="sold">
-        Sold Out
+        SOLD OUT
       </span>
     `
     : `
       <span class="available">
-        Available
+        AVAILABLE
       </span>
     `
 
@@ -267,7 +270,27 @@ function renderItem(item){
 
 function formatPrice(price){
 
-  return `Rp ${Number(price)
+  if(!price) return "-"
+
+  const clean =
+    String(price).trim()
+
+  if(
+    clean.includes("K") ||
+    clean.includes("/") ||
+    clean.includes("-")
+  ){
+    return clean
+  }
+
+  const number =
+    Number(clean)
+
+  if(isNaN(number)){
+    return clean
+  }
+
+  return `Rp ${number
     .toLocaleString("id-ID")}`
 
 }
