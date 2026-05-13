@@ -12,6 +12,10 @@ const BEANS_API =
 
 
 
+/* =========================
+   LOAD MENU
+========================= */
+
 async function loadMenu(){
 
   try{
@@ -50,7 +54,9 @@ async function loadMenu(){
           row.c[2]?.v || "",
 
         price:
-          row.c[3]?.v || "",
+          row.c[3]?.f ||
+          row.c[3]?.v ||
+          "",
 
         available:
           row.c[4]?.v || "TRUE",
@@ -59,6 +65,7 @@ async function loadMenu(){
           row.c[5]?.v || "-"
 
       }))
+
 
 
     /* ======================
@@ -129,6 +136,10 @@ async function loadMenu(){
 
 
 
+/* =========================
+   RENDER MENU
+========================= */
+
 function renderMenu(data, beans){
 
   const grouped = {}
@@ -176,6 +187,10 @@ function renderMenu(data, beans){
 
 
 
+/* =========================
+   CATEGORY
+========================= */
+
 function renderCategory(title,items){
 
   return `
@@ -208,10 +223,15 @@ function renderCategory(title,items){
 
 
 
+/* =========================
+   MENU ITEM
+========================= */
+
 function renderItem(item){
 
   const isAvailable =
-    String(item.available).toUpperCase() === "TRUE"
+    String(item.available)
+      .toUpperCase() === "TRUE"
 
   const available =
     !isAvailable
@@ -268,37 +288,22 @@ function renderItem(item){
 
 
 
+/* =========================
+   FORMAT PRICE
+========================= */
+
 function formatPrice(price){
 
   if(!price) return "-"
 
-  const clean =
-    String(price).trim()
-
-  if(
-    clean.includes("K") ||
-    clean.includes("/") ||
-    clean.includes("-")
-  ){
-    return clean
-  }
-
-  const number =
-    Number(clean)
-
-  if(isNaN(number)){
-    return clean
-  }
-
-  return `Rp ${number
-    .toLocaleString("id-ID")}`
+  return String(price)
 
 }
 
 
 
 /* =========================
-   BEANS
+   BEANS SECTION
 ========================= */
 
 function renderBeansSection(beans){
@@ -361,5 +366,10 @@ function renderBeansSection(beans){
 
 }
 
+
+
+/* =========================
+   INIT
+========================= */
 
 loadMenu()
