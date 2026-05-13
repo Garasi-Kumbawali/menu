@@ -288,6 +288,21 @@ function renderItem(item){
 
 
 
+
+
+function getCellValue(cell){
+
+  if(!cell) return ""
+
+  if(cell.f) return cell.f
+
+  if(cell.v !== undefined) return cell.v
+
+  return ""
+
+}
+
+
 /* =========================
    FORMAT PRICE
 ========================= */
@@ -297,6 +312,7 @@ function formatPrice(price){
   if(!price) return "-"
 
   return String(price)
+    .replace(/^'/, "")
 
 }
 
