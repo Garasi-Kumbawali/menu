@@ -1,10 +1,14 @@
 const SHEET_ID =
   "1rjAvzY28sZ6QABnztEiUK56NSIzlvYrlYl7E8eGdI7A"
 
-const SHEET_NAME = "Menu"
+const MENU_SHEET = "Menu"
+const BEANS_SHEET = "Beans"
 
-const API_URL =
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${SHEET_NAME}`
+const MENU_API =
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${MENU_SHEET}`
+
+const BEANS_API =
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${BEANS_SHEET}`
 
 
 
@@ -12,23 +16,29 @@ async function loadMenu(){
 
   try{
 
-    const response = await fetch(API_URL)
+    /* ======================
+       MENU
+    ====================== */
 
-    const text = await response.text()
+    const menuResponse =
+      await fetch(MENU_API)
 
-    const json =
+    const menuText =
+      await menuResponse.text()
+
+    const menuJson =
       JSON.parse(
-        text.substring(
+        menuText.substring(
           47,
-          text.length - 2
+          menuText.length - 2
         )
       )
 
-    const rows =
-      json.table.rows
+    const menuRows =
+      menuJson.table.rows
 
-    const data =
-      rows.map(row => ({
+    const menuData =
+      menuRows.map(row => ({
 
         id:
           row.c[0]?.v || "",
@@ -50,7 +60,52 @@ async function loadMenu(){
 
       }))
 
-    renderMenu(data)
+
+    /* ======================
+       BEANS
+    ====================== */
+
+    const beansResponse =
+      await fetch(BEANS_API)
+
+    const beansText =
+      await beansResponse.text()
+
+    const beansJson =
+      JSON.parse(
+        beansText.substring(
+          47,
+          beansText.length - 2
+        )
+      )
+
+    const beansRows =
+      beansJson.table.rows
+
+    const beansData =
+      beansRows.map(row => ({
+
+        id:
+          row.c[0]?.v || "",
+
+        category:
+          row.c[1]?.v || "",
+
+        name:
+          row.c[2]?.v || "",
+
+        process:
+          row.c[3]?.v || "",
+
+        origin:
+          row.c[4]?.v || "",
+
+        notes:
+          row.c[5]?.v || ""
+
+      }))
+
+    renderMenu(menuData, beansData)
 
   }
 
@@ -74,7 +129,7 @@ async function loadMenu(){
 
 
 
-function renderMenu(data){
+function renderMenu(data, beans){
 
   const grouped = {}
 
@@ -113,7 +168,7 @@ function renderMenu(data){
       grouped["Drink"] || []
     )}
 
-    ${renderBeansSection()}
+    ${renderBeansSection(beans)}
 
   `
 
@@ -223,7 +278,7 @@ function formatPrice(price){
    BEANS
 ========================= */
 
-function renderBeansSection(){
+function renderBeansSection(beans){
 
   return `
 
@@ -247,55 +302,33 @@ function renderBeansSection(){
 
       <div class="beans-grid">
 
-        <div class="bean-card">
+        ${beans.map(bean => `
 
-          <div class="bean-top">
+          <div class="bean-card">
 
-            <div class="bean-origin">
-              Bandung
+            <div class="bean-top">
+
+              <div class="bean-origin">
+                ${bean.origin}
+              </div>
+
+              <div class="bean-badge">
+                ${bean.process}
+              </div>
+
             </div>
 
-            <div class="bean-badge">
-              Fruity
+            <div class="bean-name">
+              ${bean.name}
             </div>
 
-          </div>
-
-          <div class="bean-name">
-            Halu Banana
-          </div>
-
-          <div class="bean-note">
-            Sweet banana aroma with smooth
-            body and soft acidity.
-          </div>
-
-        </div>
-
-        <div class="bean-card">
-
-          <div class="bean-top">
-
-            <div class="bean-origin">
-              Aceh
-            </div>
-
-            <div class="bean-badge">
-              Winey
+            <div class="bean-note">
+              ${bean.notes}
             </div>
 
           </div>
 
-          <div class="bean-name">
-            Blueberry Wine
-          </div>
-
-          <div class="bean-note">
-            Berry-forward profile with
-            winey finish and floral aroma.
-          </div>
-
-        </div>
+        `).join("")}
 
       </div>
 
@@ -304,7 +337,6 @@ function renderBeansSection(){
   `
 
 }
-
 
 
 loadMenu()
