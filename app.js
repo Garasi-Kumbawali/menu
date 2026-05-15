@@ -405,7 +405,7 @@ function renderBeansSection(beans){
         <div class="category-line"></div>
 
         <div class="category-name">
-          Kumbawali Beans Selection
+          Beans Selection
         </div>
 
         <div class="category-line"></div>
