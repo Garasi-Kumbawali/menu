@@ -460,7 +460,11 @@ function renderBeansSection(beans){
       </div>
 
       <div class="beans-subtitle">
-        Available for V60 • Japanese • Manual Brew
+        Coffee • Eatery • Space
+      </div>
+
+      <div class="menu-global-info">
+        +1000 additional ice for all ginger-based drinks • +1500 takeaway
       </div>
 
       <div class="beans-grid">
