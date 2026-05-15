@@ -243,6 +243,8 @@ function renderMenu(data, beans){
 
       <div class="footer-brand">
         Garasi Kumbawali
+        <br>
+        Coffee & Eatery
       </div>
 
       <div class="footer-contact">
