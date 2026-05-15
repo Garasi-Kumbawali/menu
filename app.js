@@ -211,11 +211,11 @@ function renderMenu(data, beans){
         </div>
 
         <div class="menu-info-item">
-          +1000 additional ice for all ginger-based drinks
+          +1000 untuk semua minuman jahe
         </div>
 
         <div class="menu-info-item">
-          +1500 takeaway charge
+          +1500 takeaway
         </div>
 
       </div>
