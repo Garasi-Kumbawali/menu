@@ -200,27 +200,6 @@ function renderMenu(data, beans){
       grouped["Coffee"] || []
     )}
 
-    ${renderBeansSection(beans)}
-
-    <section class="menu-info-section">
-
-      <div class="menu-info-card">
-
-        <div class="menu-info-title">
-          Additional Information
-        </div>
-
-        <div class="menu-info-item">
-          +1000 untuk tambahan es semua minuman jahe
-        </div>
-
-        <div class="menu-info-item">
-          +1500 takeaway
-        </div>
-
-      </div>
-
-    </section>
 
     ${renderCategory(
       "Non Coffee",
