@@ -463,16 +463,6 @@ function renderBeansSection(beans){
   Coffee • Eatery • Space
 </div>
 
-<div class="menu-global-info">
-
-  +1000 additional ice for all ginger-based drinks
-
-  <span>•</span>
-
-  +1500 takeaway
-
-</div>
-
 
 
       <div class="beans-grid">
