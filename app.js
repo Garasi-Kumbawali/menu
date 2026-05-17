@@ -217,37 +217,43 @@ ${renderBeansSection(beans)}
       grouped["Snack"] || []
     )}
 
+<footer class="menu-footer">
 
-    
+  <div class="footer-brand">
+    Garasi Kumbawali
+  </div>
 
-    <footer class="menu-footer">
+  <div class="footer-contact-text">
+    Reservation & Information
+  </div>
 
-      <div class="footer-brand">
-        Garasi Kumbawali
-        <br>
-        Coffee & Eatery
-      </div>
+  <div class="footer-links">
 
-      <div class="footer-contact">
-        Reservation & Information
-      </div>
-<a
-  class="footer-number"
-  href="https://wa.me/6281225222112"
-  target="_blank"
->
-  WhatsApp Reservation
-</a>
+    <a
+      href="https://wa.me/6281225222112"
+      target="_blank"
+      class="footer-link"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+      Yudha Harnoko
+    </a>
 
-      <a
-        href="https://instagram.com/zul.notes"
-        target="_blank"
-        class="footer-credit"
-      >
-        Digital Menu by Zul.notes
-      </a>
+    <a
+      href="https://instagram.com/zul.notes"
+      target="_blank"
+      class="footer-link"
+    >
+      <i class="fa-brands fa-instagram"></i>
+      @zul.notes
+    </a>
 
-    </footer>
+  </div>
+
+  <div class="footer-credit">
+    Designed & Developed by Zul.notes
+  </div>
+
+</footer>
 
 
   `
