@@ -238,6 +238,14 @@ ${renderBeansSection(beans)}
       Yudha Harnoko
     </a>
 
+
+
+  </div>
+
+  <div class="footer-credit">
+    This Menu is Designed & Developed by Zul.notes
+  </div>
+
     <a
       href="https://instagram.com/zul.notes"
       target="_blank"
@@ -246,12 +254,6 @@ ${renderBeansSection(beans)}
       <i class="fa-brands fa-instagram"></i>
       @zul.notes
     </a>
-
-  </div>
-
-  <div class="footer-credit">
-    Designed & Developed by Zul.notes
-  </div>
 
 </footer>
 
